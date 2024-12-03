@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     bool isFirstTime = prefs.getBool(userKey) ?? true;
 
     if (isFirstTime) {
-      _showUserDetailsDialog(userKey);
+      _showUserDetailsDialog(userKey, nameKey);
     } else {
       setState(() {
 
@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  void _showUserDetailsDialog(String userKey) {
+  void _showUserDetailsDialog(String userKey, String nameKey) {
     String name = '';
 
     showDialog(
@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (name.isNotEmpty) {
                   SharedPreferences prefs = await SharedPreferences.getInstance();
                   await prefs.setBool(userKey, false);
-                  await prefs.setString('userName_${widget.userEmail}', name);
+                  await prefs.setString(nameKey, name);
                   setState(() {
                     userName = name;
                   });
