@@ -31,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
       _showUserDetailsDialog(userKey, nameKey);
     } else {
       setState(() {
-
       });
      userName =  prefs.getString(nameKey);
     }
